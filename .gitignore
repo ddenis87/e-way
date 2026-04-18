@@ -1,0 +1,25 @@
+# --- Laravel (api-sanctum) ---
+api-sanctum/vendor/
+api-sanctum/.env
+api-sanctum/storage/*.key
+api-sanctum/public/storage
+api-sanctum/public/hot
+
+# --- Vue (frontend) ---
+frontend/node_modules/
+frontend/dist/
+frontend/local.env
+frontend/.DS_Store
+
+# --- Docker & System ---
+mysql_data/
+proxy_data/
+letsencrypt/
+.env
+.idea/
+.vscode/
+*.log
+npm-debug.log*
+
+node_modules/
+package-lock.json

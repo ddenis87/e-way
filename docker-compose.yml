@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Наш Laravel
+  laravel_app:
+    build:
+      context: ./api-sanctum
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    restart: no
+    env_file:
+      - .env
+    volumes:
+      - ./api-sanctum:/var/www
+    networks:
+      - backend-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: no
+    ports:
+      - "8080:80"
+    volumes:
+      - ./api-sanctum:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - backend-network
+
+  # Наша база MySQ
+  mysql_db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: no
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge

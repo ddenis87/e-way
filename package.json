@@ -1,0 +1,12 @@
+{
+  "name": "my-pwa-monorepo",
+  "version": "1.0.0",
+  "scripts": {
+    "frontend-install": "npm install --prefix frontend",
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "preview": "npm run preview --prefix frontend",
+    "api-install": "docker exec -it laravel_app composer install",
+    "migrate": "docker exec -it laravel_app php artisan migrate"
+  }
+}
