@@ -22,17 +22,17 @@ export default defineConfig({
         display: 'standalone', // Это делает приложение похожим на нативное
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: 'logo_192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'logo_512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'logo_512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable' // Важно для иконок на Android

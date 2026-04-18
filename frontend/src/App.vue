@@ -1,8 +1,12 @@
+<template>
+    <h1>Vue {{ version }} + TS + SASS</h1>
+    {{ message }}
+</template>
+
 <script setup lang="ts">
 // TypeScript работает!
 import { onMounted, ref } from 'vue'
 const apiBaseUrl = import.meta.env.VITE_API_URL;
-const version: string = '3.0'
 const message = ref('Загрузка...')
 
 onMounted(async () => {
@@ -15,11 +19,6 @@ onMounted(async () => {
     }
 })
 </script>
-
-<template>
-    <h1>Vue {{ version }} + TS + SASS</h1>
-    {{ message }}
-</template>
 
 <style lang="scss">
 // SASS работает!
