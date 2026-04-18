@@ -2,7 +2,9 @@
     <div class="view-auth">
         Представтесь:
         <input type="text" />
-        <button @click="onAuth">-></button>
+        <v-btn @click="onAuth">
+            ->
+        </v-btn>
     </div>
 </template>
 

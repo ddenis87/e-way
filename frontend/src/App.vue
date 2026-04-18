@@ -1,33 +1,27 @@
 <template>
-    <component :is="layout">
-        <router-view />
-    </component>
+    <v-app>
+        <component :is="layout">
+            <router-view />
+        </component>
+    </v-app>
 </template>
 
 <script setup lang="ts">
-// TypeScript работает!
-import {computed} from 'vue';
-import {useRoute} from "vue-router";
-import LayoutAuth from "./lauouts/layout-auth.vue";
+    import {computed, type Component} from 'vue';
+    import {useRoute} from "vue-router";
+    import LayoutAuth from "./lauouts/layout-auth.vue";
 
-const route = useRoute()
-const layouts = {
-    LayoutAuth,
-}
+    const route = useRoute()
 
-const layout = computed(() => {
-    return layouts[route.meta.layout] || LayoutAuth;
-});
+    const layouts: Record<string, Component> = {
+        LayoutAuth,
+    };
 
+    const layout = computed(() => {
+        const layout = route.meta.layout as string
+        return layouts[layout] || LayoutAuth;
+    });
 </script>
 
 <style lang="scss">
-// SASS работает!
-$color: #42b883;
-h1 {
-    color: $color;
-    &:hover {
-        filter: drop-shadow(0 0 2em $color);
-    }
-}
 </style>
