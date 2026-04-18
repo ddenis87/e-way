@@ -1,12 +1,13 @@
 <script setup lang="ts">
 // TypeScript работает!
 import { onMounted, ref } from 'vue'
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 const version: string = '3.0'
 const message = ref('Загрузка...')
 
 onMounted(async () => {
     try {
-        const response = await fetch('http://localhost:8080/api/check')
+        const response = await fetch(`${apiBaseUrl}/api/check`)
         const data = await response.json()
         message.value = data.message
     } catch (e) {
