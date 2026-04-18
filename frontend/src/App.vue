@@ -1,24 +1,24 @@
 <template>
-    <h1>Vue {{ version }} + TS + SASS</h1>
-    {{ message }}
+    <component :is="layout">
+        <router-view />
+    </component>
 </template>
 
 <script setup lang="ts">
 // TypeScript работает!
-import { onMounted, ref } from 'vue';
-const apiBaseUrl = import.meta.env.VITE_API_URL;
-const version: string = '3.0';
-const message = ref('Загрузка...');
+import {computed} from 'vue';
+import {useRoute} from "vue-router";
+import LayoutAuth from "./lauouts/layout-auth.vue";
 
-onMounted(async () => {
-    try {
-        const response = await fetch(`${apiBaseUrl}/api/check`);
-        const data = await response.json();
-        message.value = data.message;
-    } catch (e) {
-        message.value = 'Ошибка связи с API';
-    }
+const route = useRoute()
+const layouts = {
+    LayoutAuth,
+}
+
+const layout = computed(() => {
+    return layouts[route.meta.layout] || LayoutAuth;
 });
+
 </script>
 
 <style lang="scss">

@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
+import { registerSW } from 'virtual:pwa-register'
+
 import App from './App.vue'
 
-// Импортируем функцию регистрации
-import { registerSW } from 'virtual:pwa-register'
+import router from './router';
 
 // Регистрируем сервис-воркер
 registerSW({ immediate: true })
 
-createApp(App).mount('#app')
+createApp(App)
+    .use(router)
+    .mount('#app')
