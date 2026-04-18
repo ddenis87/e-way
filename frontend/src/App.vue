@@ -5,20 +5,20 @@
 
 <script setup lang="ts">
 // TypeScript работает!
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue';
 const apiBaseUrl = import.meta.env.VITE_API_URL;
-const version: string = '3.0'
-const message = ref('Загрузка...')
+const version: string = '3.0';
+const message = ref('Загрузка...');
 
 onMounted(async () => {
     try {
-        const response = await fetch(`${apiBaseUrl}/api/check`)
-        const data = await response.json()
-        message.value = data.message
+        const response = await fetch(`${apiBaseUrl}/api/check`);
+        const data = await response.json();
+        message.value = data.message;
     } catch (e) {
-        message.value = 'Ошибка связи с API'
+        message.value = 'Ошибка связи с API';
     }
-})
+});
 </script>
 
 <style lang="scss">

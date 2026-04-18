@@ -14,9 +14,9 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json,vue,txt,woff2}']
       },
       manifest: {
-        name: 'My PWA Project',
-        short_name: 'PWAApp',
-        description: 'PWA с Laravel бэкендом',
+        name: 'Easy way',
+        short_name: 'e-Way',
+        description: 'Easy way to move',
         theme_color: '#42b883',
         background_color: '#ffffff',
         display: 'standalone', // Это делает приложение похожим на нативное
