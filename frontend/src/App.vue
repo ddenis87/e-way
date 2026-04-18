@@ -7,6 +7,7 @@
 // TypeScript работает!
 import { onMounted, ref } from 'vue'
 const apiBaseUrl = import.meta.env.VITE_API_URL;
+const version: string = '3.0'
 const message = ref('Загрузка...')
 
 onMounted(async () => {
