@@ -9,8 +9,9 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/check', function () {
     return response()->json([
-        'status' => 'success', 
+        'status' => 'success',
         'message' => 'API is working!',
-        'server_time' => now()->toDateTimeString()
+        'server_time' => now()->toDateTimeString(),
+        'test deployment string' => 'true',
     ]);
 });
