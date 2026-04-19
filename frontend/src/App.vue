@@ -9,16 +9,16 @@
 <script setup lang="ts">
     import {computed, type Component} from 'vue';
     import {useRoute} from "vue-router";
-    import LayoutAuth from "./lauouts/layout-auth.vue";
+    import LayoutAuth from "./lauouts/layout-auth.vue"
 
-    const route = useRoute()
+    const route = useRoute();
 
     const layouts: Record<string, Component> = {
         LayoutAuth,
     };
 
     const layout = computed(() => {
-        const layout = route.meta.layout as string
+        const layout = route.meta.layout as string;
         return layouts[layout] || LayoutAuth;
     });
 </script>
