@@ -1,10 +1,10 @@
 <template>
     <div class="view-auth">
-        Представтесь:
-        <input type="text" />
-        <v-btn @click="onAuth">
-            ->
-        </v-btn>
+            <h3>Представтесь:</h3>
+            <v-text-field label="Логин" />
+            <v-btn @click="onAuth">
+                Продолжить
+            </v-btn>
     </div>
 </template>
 
@@ -19,5 +19,13 @@ const onAuth = () => {
 </script>
 
 <style scoped lang="scss">
+    .view-auth {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
+        h3 {
+            color: #2ab728;
+        }
+    }
 </style>
