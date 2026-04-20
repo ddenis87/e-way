@@ -21,6 +21,7 @@ export default tseslint.config(
         // Общие правила для TS и JS
         files: ['**/*.ts', '**/*.js'],
         rules: {
+            'quotes': ['error', 'single', { 'avoidEscape': true }],
             'indent': ['error', 4],
             'semi': ['error', 'always'],
             'comma-dangle': ['error', 'always-multiline'],

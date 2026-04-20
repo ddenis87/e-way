@@ -1,13 +1,7 @@
 <template>
     <div class="layout-auth">
         <div class="auth-bar">
-            <div class="brand">
-                <h3 class="text-h4 font-weight-bold mb-3 mt-3">
-                    <span class="text-gradient">e-Way</span>
-                    <span class="mx-2 text-grey-lighten-1">|</span>
-                    <small class="text-subtitle-1 text-grey-darken-1 font-italic">Попутчик</small>
-                </h3>
-            </div>
+            <top-bar />
         </div>
         <div class="auth-body">
             <router-view />
@@ -16,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+    import TopBar from "../components/top-bar.vue";
 
 </script>
 
@@ -36,13 +31,7 @@
             justify-content: flex-start;
             align-items: center;
             padding: 0px 18px;
-            border-bottom: thin solid grey;
-
-            .text-gradient {
-                background: linear-gradient(45deg, #1867C0, #5CBBFF);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
+            border-bottom: thin solid lightgray;
         }
 
         .auth-body {

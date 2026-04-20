@@ -1,27 +1,27 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import ViewAuth from '../views/view-auth.vue'
-import ViewEntry from '../views/view-entry.vue'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
+import ViewLogin from '../views/view-login.vue';
+import ViewUserRole from '../views/view-user-role.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/e-way',
-        name: 'auth',
-        component: ViewAuth,
+        path: '/login',
+        name: 'login',
+        component: ViewLogin,
         meta: {
             layout: 'LayoutAuth',
         },
     },
     {
-        path: '/e-way/entry',
-        name: 'entry',
-        component: ViewEntry,
+        path: '/user-role',
+        name: 'user-role',
+        component: ViewUserRole,
         meta: {
             layout: 'LayoutAuth',
         },
     },
-]
+];
 
 export default createRouter({
-    history: createWebHistory(),
-    routes
+    history: createWebHistory('/e-way/'),
+    routes,
 });
