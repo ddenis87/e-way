@@ -4,35 +4,49 @@
             Представтесь:
         </h3>
         <v-text-field
+            ref="loginFieldRef"
             v-model="login"
+            :rules="[v => !!v || 'Поле не может быть пустым.']"
+            validate-on="submit"
             label="Имя или логин"
             variant="underlined"
             @keyup.enter="onLogin"
+            @input="resetLoginValidate"
         />
-        <div class="d-flex justify-end ga-2">
-            <v-btn
-                variant="tonal"
-                :color="gender === FEMALE ? 'green' : 'blue-grey-lighten-1'"
-                :ripple="false"
-                size="large"
-                density="comfortable"
-                prepend-icon="mdi-gender-female"
-                @click="() => gender = FEMALE"
-            >
-                Жен.
-            </v-btn>
-            <v-btn
-                variant="tonal"
-                :color="gender === MALE ? 'green' : 'blue-grey-lighten-1'"
-                :ripple="false"
-                size="large"
-                density="comfortable"
-                prepend-icon="mdi-gender-male"
-                @click="() => gender = MALE"
-            >
-                Муж.
-            </v-btn>
-        </div>
+
+        <v-input
+            ref="genderFieldRef"
+            v-model="gender"
+            :rules="[v => !!v || 'Укажите пол.']"
+            validate-on="submit"
+            class="text-end"
+        >
+            <div class="d-flex justify-end ga-2 w-100">
+                <v-btn
+                    variant="tonal"
+                    :color="gender === FEMALE ? 'green' : 'blue-grey-lighten-1'"
+                    :ripple="false"
+                    size="large"
+                    density="comfortable"
+                    prepend-icon="mdi-gender-female"
+                    @click="() => setGender(FEMALE)"
+                >
+                    Жен.
+                </v-btn>
+                <v-btn
+                    variant="tonal"
+                    :color="gender === MALE ? 'green' : 'blue-grey-lighten-1'"
+                    :ripple="false"
+                    size="large"
+                    density="comfortable"
+                    prepend-icon="mdi-gender-male"
+                    @click="() => setGender(MALE)"
+                >
+                    Муж.
+                </v-btn>
+            </div>
+        </v-input>
+
         <v-btn
             size="large"
             @click="onLogin"
@@ -57,10 +71,30 @@
     const {userLogin} = useAuthManager();
     const login = ref('');
     let gender = ref('');
+    let loginFieldRef = ref(null);
+    let genderFieldRef = ref(null);
 
-    const onLogin = () => {
-        userLogin(login.value, gender.value);
-        navigationReplace(NAV_USER_ROLE);
+    const onLogin = async () => {
+        if (!loginFieldRef.value || !genderFieldRef.value) return;
+
+        const validLogin = await loginFieldRef.value.validate();
+        const validGender = await genderFieldRef.value.validate();
+
+        if (validLogin && validGender) {
+            userLogin(login.value, gender.value);
+            navigationReplace(NAV_USER_ROLE);
+        }
+    };
+    const setGender = (value: string) => {
+        gender.value = value;
+        if (genderFieldRef.value) {
+            genderFieldRef.value.resetValidation();
+        }
+    };
+    const resetLoginValidate = () => {
+        if (loginFieldRef.value) {
+            loginFieldRef.value.resetValidation();
+        }
     };
 </script>
 
