@@ -1,24 +1,31 @@
-<script setup lang="ts">
-    import {defineProps} from 'vue';
-
-    type CHelpBlockProps = {
-        icon: undefined|string;
-    };
-
-    const props = defineProps<CHelpBlockProps>();
-    const icon = props.icon;
-
-</script>
-
 <template>
-    <div class="help-block mt-6 d-flex align-center ga-2">
+    <div class="help-block d-flex align-start ga-2">
         <v-icon
             v-if="icon"
+            class="icon"
             :icon="icon"
         /><span class="help-text"><slot /></span>
     </div>
 </template>
 
-<style scoped lang="scss">
+<script setup lang="ts">
+    import {defineProps} from 'vue';
 
+    type CHelpBlockProps = {
+        icon?: string;
+    };
+
+    const props = defineProps<CHelpBlockProps>();
+    const icon = props.icon;
+</script>
+
+<style scoped lang="scss">
+    .help-block {
+        font-size: 14px;
+        color: grey;
+
+        .icon {
+            margin-top: 1px;
+        }
+    }
 </style>

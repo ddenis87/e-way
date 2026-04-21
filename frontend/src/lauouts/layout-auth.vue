@@ -1,7 +1,7 @@
 <template>
     <div class="layout-auth">
         <div class="auth-bar">
-            <top-bar />
+            <c-top-bar />
         </div>
         <div class="auth-body">
             <router-view />
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-    import TopBar from "../components/top-bar.vue";
+    import CTopBar from "../components/c-top-bar.vue";
 
 </script>
 

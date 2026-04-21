@@ -20,13 +20,14 @@
         </div>
         <v-dialog
             v-model="showConfirm"
+            max-width="420"
             persistent
         >
             <v-card>
                 <template #title>
                     <v-icon
                         icon="mdi-alert-circle-outline"
-                        color="warning"
+                        color="error"
                         class="me-2"
                     />
                     Выйти?
@@ -37,15 +38,22 @@
                 </template>
 
                 <template #actions>
-                    <v-spacer />
+                    <div class="d-flex justify-space-between w-100">
+                        <v-btn
+                            color="error"
+                            size="large"
+                            @click="logout"
+                        >
+                            Выйти
+                        </v-btn>
 
-                    <v-btn @click="logout">
-                        Выйти
-                    </v-btn>
-
-                    <v-btn @click="showConfirm = false">
-                        Остаться
-                    </v-btn>
+                        <v-btn
+                            size="large"
+                            @click="showConfirm = false"
+                        >
+                            Остаться
+                        </v-btn>
+                    </div>
                 </template>
             </v-card>
         </v-dialog>
@@ -54,12 +62,11 @@
 
 <script setup lang="ts">
     import {ref} from 'vue';
-    import routers from '../plugins/routers.ts';
     import useAuthManager from '../services/AuthManager.ts';
     import useNavigationManager from '../services/NavigationManager.ts';
 
     const {state, userLogout} = useAuthManager();
-    const {NAV_LOGIN} = useNavigationManager();
+    const {navigationReplace, NAV_LOGIN} = useNavigationManager();
     const showConfirm = ref(false);
 
     const confirm = () => {
@@ -70,8 +77,7 @@
         showConfirm.value = false;
 
         userLogout();
-
-        routers.replace({ name: NAV_LOGIN });
+        navigationReplace(NAV_LOGIN);
     };
 </script>
 
