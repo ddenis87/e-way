@@ -33,11 +33,10 @@
 </script>
 
 <style lang="scss">
-@media screen and (min-width: 450px) {
-    #app {
-        max-width: 450px;
-        margin: 0 auto;
+    @media screen and (min-width: 450px) {
+        #app {
+            max-width: 450px;
+            margin: 0 auto;
+        }
     }
-}
-
 </style>
