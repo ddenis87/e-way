@@ -3,8 +3,9 @@ import type {Router} from 'vue-router';
 
 const NAV_LOGIN = 'login';
 const NAV_USER_ROLE = 'user-role';
+const NAV_DRIVER = 'driver';
 
-const { state: stateAuth } = useAuthManager();
+const {state: stateAuth} = useAuthManager();
 let router: Router|null = null;
 
 function initialize(r: Router) {
@@ -13,10 +14,10 @@ function initialize(r: Router) {
     router.beforeEach((to, _, next) => {
         if (to.name !== NAV_LOGIN && !stateAuth.isLogin) {
             // Если не авторизован и идет не на страницу логина — на логин
-            next({ name: NAV_LOGIN });
+            next({name: NAV_LOGIN});
         } else if (to.name === NAV_LOGIN && stateAuth.isLogin) {
             // Если авторизован и идет на страницу логина — на главную
-            next({ name: NAV_USER_ROLE });
+            next({name: NAV_USER_ROLE});
         } else {
             next(); // В остальных случаях просто пропускаем
         }
@@ -34,5 +35,6 @@ export default function useNavigationManager() {
         navigationReplace,
         NAV_LOGIN,
         NAV_USER_ROLE,
+        NAV_DRIVER,
     };
 }

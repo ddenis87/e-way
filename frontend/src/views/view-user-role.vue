@@ -8,6 +8,7 @@
             size="large"
             prepend-icon="mdi-car-back"
             color="success"
+            @click="() => navigationReplace(NAV_DRIVER)"
         >
             Веду машину
         </v-btn>
@@ -28,6 +29,9 @@
 <script setup lang="ts">
 
     import CHelpBlock from "../components/c-help-block.vue";
+    import useNavigationManager from '../services/NavigationManager.ts'
+
+    const {navigationReplace, NAV_DRIVER} = useNavigationManager();
 </script>
 
 <style scoped lang="scss">

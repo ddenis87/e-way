@@ -21,7 +21,8 @@ export default tseslint.config(
         // Общие правила для TS и JS
         files: ['**/*.ts', '**/*.js'],
         rules: {
-            'quotes': ['error', 'single', { 'avoidEscape': true }],
+            'object-curly-spacing': ['error', 'never'],
+            'quotes': ['error', 'single', {'avoidEscape': true}],
             'indent': ['error', 4],
             'semi': ['error', 'always'],
             'comma-dangle': ['error', 'always-multiline'],
@@ -32,8 +33,9 @@ export default tseslint.config(
         files: ['**/*.vue'],
         rules: {
             'vue/html-indent': ['error', 4],
-            'vue/script-indent': ['error', 4, { 'baseIndent': 1 }],
+            'vue/script-indent': ['error', 4, {'baseIndent': 1}],
             'vue/multi-word-component-names': 'off',
+            'vue/quotes': 'single',
 
             // ВАЖНО: Отключаем базовый indent, так как vue/script-indent берет это на себя
             'indent': 'off',

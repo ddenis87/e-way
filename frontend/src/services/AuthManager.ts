@@ -1,6 +1,6 @@
 import {reactive} from 'vue';
 
-interface AuthState {
+export type AuthState = {
     login: string | null;
     isLogin: boolean;
     gender: string|null;
